@@ -1,4 +1,4 @@
-import Entity from '../Entity.js';
+import Entity, { Trait } from '../Entity.js';
 import Go from '../traits/Go.js';
 import Jump from '../traits/Jump.js';
 import Killable from '../traits/Killable.js';
@@ -14,6 +14,20 @@ export function loadMario() {
     return loadSpriteSheet('mario')
     .then(createMarioFactory);
 }
+
+class Behavior extends Trait {
+    constructor() {
+        super('behavior');
+    }
+
+    update(us, deltaTime, level) {
+        if (!level.horizontalLimits.isValid(us.pos.x) || !level.verticalLimits.isValid(us.pos.y)) {
+            us.killable.kill();
+        }
+    }
+}
+
+
 
 function createMarioFactory(sprite) {
     const runAnim = sprite.animations.get('run');
@@ -52,6 +66,7 @@ function createMarioFactory(sprite) {
         mario.addTrait(new Jump());
         mario.addTrait(new Killable());
         mario.addTrait(new Stomper());
+        mario.addTrait(new Behavior());
 
         mario.killable.removeAfter = 0;
 

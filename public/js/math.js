@@ -38,3 +38,14 @@ export class Vec2 {
         this.y = y;
     }
 }
+
+export class Limit {
+    constructor(min, max) {
+        this.max = max;
+        this.min = min;
+    }
+
+    isValid(value) {
+        return value < this.max && value > this.min;
+    }
+}
