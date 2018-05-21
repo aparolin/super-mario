@@ -71,6 +71,7 @@ function createMarioFactory(sprite) {
         mario.killable.removeAfter = 0;
 
         mario.jump.sound = sprite.sounds.get('jump');
+        mario.jump.sound.volume = .2;
 
         mario.turbo = setTurboState;
         mario.draw = drawMario;
