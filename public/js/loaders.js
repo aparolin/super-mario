@@ -56,6 +56,10 @@ export function loadSpriteSheet(name) {
             });
         }
 
+        if (sheetSpec.keyboardModule){
+            sprites.keyboardModule  = sheetSpec.keyboardModule;
+        }
+
         return sprites;
     });
 }

@@ -31,5 +31,7 @@
                 "walk-4"
             ]
         }
-    ]
+    ],
+
+    "keyboardModule": "/config/keyboard/bowser.js"
 }

@@ -4,7 +4,9 @@ import Killable from '../traits/Killable.js';
 import PendulumMove from '../traits/PendulumMove.js';
 import Physics from '../traits/Physics.js';
 import Solid from '../traits/Solid.js';
+import Jump from '../traits/Jump.js';
 import {loadSpriteSheet} from '../loaders.js';
+import {setupKeyboard} from '../input.js';
 
 export function loadBowser() {
     return loadSpriteSheet('bowser')
@@ -54,16 +56,24 @@ function createBowserFactory(sprite) {
         bowser.size.set(36, 36);
         bowser.offset.y = -1;
 
+        setupKeyboard(bowser, sprite.keyboardModule);
+
         bowser.addTrait(new Physics());
         bowser.addTrait(new Solid());
         bowser.addTrait(new Go());
-        bowser.addTrait(new PendulumMove());
+        
+        //for now, let's manually control browser
+        //bowser.addTrait(new PendulumMove());
+        //also, let's make him jump
+        bowser.addTrait(new Jump());
+
         bowser.addTrait(new Behavior());
         bowser.addTrait(new Killable());
 
         bowser.draw = drawBowser;
 
-        bowser.go.dir = -1;
+        //as we are now controlling bowser, no need to tell him where to go
+        //bowser.go.dir = -1;
 
         return bowser;
     }
