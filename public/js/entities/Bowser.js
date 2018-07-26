@@ -48,7 +48,7 @@ function createBowserFactory(sprite) {
     }
 
     function drawBowser(context) {
-        sprite.draw(routeAnim(this), context, 0, 0, this.vel.x < 0);
+        sprite.draw(routeAnim(this), context, 0, 0, this.go.heading < 0);
     }
 
     return function createBowser() {
