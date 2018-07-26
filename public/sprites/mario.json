@@ -45,5 +45,7 @@
             "name": "jump",
             "url": "/audio/mario_jump.mp3"
         }
-    ]
+    ],
+
+    "keyboardModule": "/config/keyboard/mario.js"
 }

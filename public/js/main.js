@@ -41,8 +41,8 @@ async function main(canvas) {
     //level.comp.layers.push(createCollisionLayer(level));
     level.comp.layers.push(createDashboardLayer(font, playerEnv));
 
-    const input = setupKeyboard(mario);
-    input.listenTo(window);
+    //const input = setupKeyboard(mario);
+    //input.listenTo(window);
 
     const timer = new Timer(1/60);
     timer.update = function update(deltaTime) {

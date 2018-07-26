@@ -6,6 +6,7 @@ import Physics from '../traits/Physics.js';
 import Solid from '../traits/Solid.js';
 import Stomper from '../traits/Stomper.js';
 import {loadSpriteSheet} from '../loaders.js';
+import {setupKeyboard} from '../input.js';
 
 const SLOW_DRAG = 1/1000;
 const FAST_DRAG = 1/5000;
@@ -26,8 +27,6 @@ class Behavior extends Trait {
         }
     }
 }
-
-
 
 function createMarioFactory(sprite) {
     const runAnim = sprite.animations.get('run');
@@ -59,6 +58,8 @@ function createMarioFactory(sprite) {
     return function createMario() {
         const mario = new Entity();
         mario.size.set(14, 16);
+
+        setupKeyboard(mario, sprite.keyboardModule);
 
         mario.addTrait(new Physics());
         mario.addTrait(new Solid());
